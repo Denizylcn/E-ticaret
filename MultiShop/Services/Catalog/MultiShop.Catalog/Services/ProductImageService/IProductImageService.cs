@@ -9,8 +9,8 @@ namespace MultiShop.Catalog.Services.ProductImageService
         //idye göre çekme işi ama product idye  göre 
         Task UpdateProductImage(UpdateProductImageDto imageToUpdate);
 
-        Task<GetByIdProductImageDto> GetByIdProductImages(GetByIdProductImageDto idProductImage);
-        Task<List<ResultProductImageDto>> GetByProductIdProductImages(string id);
+        Task<GetByIdProductImageDto> GetByIdProductImages(string productImageId);
+        Task<List<ResultProductImageDto>> GetByProductIdProductImages(string productId);
         Task DeleteProductImage(string id);
 
     }

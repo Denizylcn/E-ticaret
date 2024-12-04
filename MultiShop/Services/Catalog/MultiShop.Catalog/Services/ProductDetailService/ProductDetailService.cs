@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
 using MultiShop.Catalog.Dtos.ProductDetailDtos;
+using MultiShop.Catalog.Dtos.ProductDtos;
 using MultiShop.Catalog.Entities;
 using MultiShop.Catalog.Settings;
 
@@ -37,12 +38,15 @@ namespace MultiShop.Catalog.Services.ProductDetailService
             return _mapper.Map<List<ResultProductDetailDto>>(values); 
             
         }
-
-        public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(GetByIdProductDetailDto getByIdProductDetailDto)
+        public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
         {
-          var value= await _productDetailCollection.Find(x=>x.productDetailId== getByIdProductDetailDto.productDetailId).FirstOrDefaultAsync();   
+            var value = await _productDetailCollection.Find<ProductDetail>(x => x.productId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductDetailDto>(value);
+
+            //Sadece Find(x=>x.productId==id) yazmak yeterli mi ?
         }
+
+       
 
         public async Task<ResultProductDetailDto> GetByProductIdProductDetailAsync(string id)
         {

@@ -13,7 +13,7 @@ namespace MultiShop.Catalog.Services.ProductService
         private readonly IMapper _mapper;
         private readonly IMongoCollection<Product> _productCollection;
 
-        public ProductService(IMapper mapper, IDatabaseSettings2 _databaseSettings)
+        public ProductService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client=new MongoClient(_databaseSettings.ConnectionString);
             var database = client.GetDatabase(_databaseSettings.DatabaseName);

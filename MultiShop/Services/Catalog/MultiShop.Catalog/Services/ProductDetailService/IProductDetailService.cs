@@ -10,8 +10,8 @@ namespace MultiShop.Catalog.Services.ProductDetailService
         //idye göre çekme işi ama product idye  göre 
         Task UpdateProductDetailAsync(UpdateProductDetailDto detailToUpdate);
 
-        Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(GetByIdProductDetailDto getByIdProductDetailDto);
-        Task<ResultProductDetailDto> GetByProductIdProductDetailAsync(string id);
+        Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string productDetailId);
+        Task<ResultProductDetailDto> GetByProductIdProductDetailAsync(string productId);
         Task DeleteProductDetailAsync(string id);
     }
 }

@@ -40,9 +40,9 @@ namespace MultiShop.Catalog.Services.ProductImageService
             return _mapper.Map<List<ResultProductImageDto>>(values);
         }
 
-        public async Task<GetByIdProductImageDto> GetByIdProductImages(GetByIdProductImageDto idProductImage)
+        public async Task<GetByIdProductImageDto> GetByIdProductImages(string ProductImageId)
         {
-            var value = await _productImageCollection.Find<ProductImage>(x => x.productImagesId == idProductImage.productImagesId).FirstOrDefaultAsync();
+            var value = await _productImageCollection.Find<ProductImage>(x => x.productImagesId == ProductImageId).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductImageDto>(value);
 
         }
@@ -60,5 +60,7 @@ namespace MultiShop.Catalog.Services.ProductImageService
             var value=_mapper.Map<ProductImage>(imageToUpdate);
              await _productImageCollection.ReplaceOneAsync<ProductImage>(x => x.productImagesId == imageToUpdate.productImagesId, value);
         }
+
+        //Product Image'i kaydetmek için method gerekli . 
     }
 }

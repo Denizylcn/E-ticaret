@@ -11,18 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 //Dependency Injection Services
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
-//builder.Services.AddScoped<IProductImageService,ProductImageService>();
-//builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
+builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 //Dependency Injection Services
 //AutoMapper  Services
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 //AutoMapper  Services
 //DB Services
-builder.Services.Configure<DatabaseSettings2>(builder.Configuration.GetSection("DatabaseSettings2"));
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 
-builder.Services.AddScoped<IDatabaseSettings2>(sp =>
+builder.Services.AddScoped<IDatabaseSettings>(sp =>
 {
-    return sp.GetRequiredService<IOptions<DatabaseSettings2>>().Value;
+    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
 });
 //DB Services
 builder.Services.AddControllers();
